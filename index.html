@@ -26,25 +26,18 @@
       <div class="row">
         <h1>Todo List</h1>
         <div class="todo__input">
-          <input type="text" />
+          <input
+            type="text"
+            class="input__text"
+          />
           <button
-            onclick="addTask()"
+            onclick="addTodo()"
             class="todo__add"
           >
             Add
           </button>
         </div>
-        <ul class="list">
-          <li>
-            Finish Frontend Simplified
-            <button
-              onclick="deleteTodo()"
-              class="todo__delete"
-            >
-              x
-            </button>
-          </li>
-        </ul>
+        <ul class="list"></ul>
       </div>
     </div>
   </body>

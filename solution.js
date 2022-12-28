@@ -1,35 +1,40 @@
-const input = document.querySelector(".input__text")
 const list = document.querySelector(".list")
+const input = document.querySelector(".input")
 
 let todoList = []
-let counter = 0
+let todoInputValue = ""
+let counter = 0;
+
+function onInputChange(event) {
+  todoInputValue = event.target.value
+}
 
 function addTodo() {
-  if (!input.value) {
+  if (!todoInputValue) {
     return
   }
-
   todoList.push({
     id: counter++,
-    task: input.value
+    task: todoInputValue
   })
-
   renderTodos()
   input.value = ""
+  todoInputValue = ""
 }
 
 function deleteTodo(id) {
-  todoList = todoList.filter(task => task.id !== id)
+  todoList = todoList.filter(todo => todo.id !== id)
   renderTodos()
 }
 
 function renderTodos() {
-  list.innerHTML = todoList.map(element =>
-    `<li>
+  list.innerHTML = todoList.map(
+    element =>
+      `<li>
         ${element.task}
         <button onclick="deleteTodo(${element.id})" class="todo__delete">
         x
         </button>
-    </li>`
+      </li>`
   ).join("")
 }
