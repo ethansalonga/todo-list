@@ -1,30 +1,37 @@
-{/* <li>
-  Finish Frontend Simplified
-  <button onclick="deleteTask()" class="todo__delete">
-    x
-  </button>
-</li> */}
-
 const list = document.querySelector(".list")
 
-const todoList = [
+let todoList = [
   {
+    id: 1,
     task: "Finish Frontend Simplified"
   },
   {
+    id: 2,
     task: "Finish Interview Questions"
   },
   {
+    id: 3,
     task: "Land $100k Job"
   },
 ]
 
-list.innerHTML = todoList.map(
-  element =>
-    `<li>
-      ${element.task}
-      <button onclick="deleteTask()" class="todo__delete">
+function deleteTodo(id) {
+  todoList = todoList.filter((todo) => {
+    return todo.id !== id
+  })
+  renderTodos()
+}
+
+function renderTodos() {
+  list.innerHTML = todoList.map(
+    element =>
+      `<li>
+        ${element.task}
+        <button onclick="deleteTodo(${element.id})" class="todo__delete">
         x
-      </button>
-    </li>`
-).join("")
+        </button>
+      </li>`
+  ).join("")
+}
+
+renderTodos()
